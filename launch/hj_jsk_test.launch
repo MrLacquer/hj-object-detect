@@ -1,0 +1,38 @@
+<launch>
+  <arg name="point_cloud_topic"  default="/camera/depth_registered/points"/>
+  <arg name="generate_point_cloud"  default="false"  doc="Generate point cloud from input_image and input_depth"/>
+
+  <!-- jsk_pcl test part -->
+  <!-- NODELET -->
+  <arg name="MANAGER" value="detection_manager" />
+  <node pkg="nodelet" type="nodelet" args="manager"	name="$(arg MANAGER)" output="screen"/>
+
+  <!-- POINT CLOUD -->
+  <node if="$(arg generate_point_cloud)" pkg="nodelet" type="nodelet" name="point_cloud_generator"
+  	args="load depth_image_proc/point_cloud_xyzrgb $(arg MANAGER)">
+    <remap from="rgb/camera_info" to="/camera/color/camera_info"/>
+    <remap from="rgb/image_rect_color" to="/camera/color/image_rect_color"/>
+    <remap from="depth_registered/image_rect" to="/camera/depth/image_rect_raw"/>
+    <remap from="depth_registered/points" to="/camera/depth_registered/points"/>
+  </node>
+
+  <!-- COORDINATES -->
+  <node pkg="nodelet" type="nodelet" name="label_mask"
+  	args="load jsk_pcl_utils/LabelToClusterPointIndices $(arg MANAGER)">
+    <remap from="~input" to="darknet_ros/label_image"/>
+    <remap from="~output" to="darknet_ros/cluster_points"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="cluster_decomposer"
+  	args="load jsk_pcl/ClusterPointIndicesDecomposer $(arg MANAGER)">
+    <remap from="~input" to="$(arg point_cloud_topic)"/>
+    <remap from="~target" to="darknet_ros/cluster_points"/>
+    <rosparam>
+      approximate_sync: true
+
+      <!-- PUBLISH TF -->
+      publish_tf: true
+      tf_prefix: yolo_
+    </rosparam>
+  </node>
+</launch>
