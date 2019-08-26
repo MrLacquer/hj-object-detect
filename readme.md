@@ -12,7 +12,7 @@ The packages have been tested under ROS Kinetic and Ubuntu 16.04.
 
 **Affiliation: [Human-Robot Interaction LAB](https://khu-hri.weebly.com), Kyung Hee Unviersity, South Korea**
 
-![hj_object dectect: Detection image](hj_object_detect/docdeteced_object.png)
+![hj_object dectect: Detection image](./hj_object_detect/docdeteced_object.png)
 
 ## Installation
 
