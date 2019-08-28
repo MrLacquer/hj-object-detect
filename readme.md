@@ -8,7 +8,7 @@ In the following ROS package detecting "plier", "hammer", "screw_driver". for th
 
 The packages have been tested under ROS Kinetic and Ubuntu 16.04. 
 
-**Author: [Hyeonjun Park](), koreaphj91@gmail.com**
+**Author: [Hyeonjun Park](https://www.linkedin.com/in/hyeonjun-park-41bb59125), koreaphj91@gmail.com**
 
 **Affiliation: [Human-Robot Interaction LAB](https://khu-hri.weebly.com), Kyung Hee Unviersity, South Korea**
 
