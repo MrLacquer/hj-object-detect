@@ -159,3 +159,9 @@ $ roslaunch hj_object_detect hj_jsk_test.launch sim:=true
 - point cloud nodelet
 - jsk_pcl_utils/LabelToClusterPointIndices nodelet
 - jsk_pcl/ClusterPointIndicesDecomposer
+
+## Video
+Click image to link to YouTube video.  
+[![plier_check](https://user-images.githubusercontent.com/4105524/63911188-631e9600-ca64-11e9-9825-16f701b9bb00.png)](https://youtu.be/3cFitqKaLN0)   
+
+
