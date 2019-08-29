@@ -1,0 +1,13 @@
+<launch>    
+   <arg name="rviz"            default="true"/>
+   <arg name="sim"               default="false"   doc="false is real camera, true is gazebo simulation"/>  
+
+   <include file="$(find hj_object_detect)/launch/hj_object_detect.launch">
+      <arg name="sim" value="$(arg sim)"/>
+   </include>
+
+  <!-- RVIZ -->
+   <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz"
+	args="-d $(find hj_object_detect)/config/hj_yolo_jsk.rviz" />
+
+</launch>

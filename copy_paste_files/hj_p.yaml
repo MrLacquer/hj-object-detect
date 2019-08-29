@@ -1,0 +1,12 @@
+yolo_model:
+  config_file:
+    name: p.cfg
+  weight_file:
+    name: p_final.weights
+  threshold:
+    value: 0.3
+  detection_classes:
+    names:
+      - hammer
+      - plier
+      - screw_driver

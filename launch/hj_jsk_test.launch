@@ -1,6 +1,17 @@
 <launch>
-  <arg name="point_cloud_topic"  default="/camera/depth_registered/points"/>
   <arg name="generate_point_cloud"  default="false"  doc="Generate point cloud from input_image and input_depth"/>
+  <arg name="sim"               default="false"   doc="false is real camera, true is gazebo simulation"/>  
+
+
+  <arg     if="$(arg sim)" name="input_image"        default="/d435/rgb/image_raw"/>
+  <arg unless="$(arg sim)" name="input_image"        default="/camera/color/image_rect_color"/>
+  <arg     if="$(arg sim)" name="input_depth"        default="/d435/depth/image_raw"/>
+  <arg unless="$(arg sim)" name="input_depth"        default="/camera/depth/image_rect_raw"/>
+  <arg     if="$(arg sim)" name="input_camera_info"  default="/d435/depth/camera_info"/>
+  <arg unless="$(arg sim)" name="input_camera_info"  default="/camera/color/camera_info"/>
+  <arg     if="$(arg sim)" name="point_cloud_topic"  default="/d435/depth/points"/>
+  <arg unless="$(arg sim)" name="point_cloud_topic"  default="/camera/depth_registered/points"/>
+
 
   <!-- jsk_pcl test part -->
   <!-- NODELET -->
@@ -10,10 +21,10 @@
   <!-- POINT CLOUD -->
   <node if="$(arg generate_point_cloud)" pkg="nodelet" type="nodelet" name="point_cloud_generator"
   	args="load depth_image_proc/point_cloud_xyzrgb $(arg MANAGER)">
-    <remap from="rgb/camera_info" to="/camera/color/camera_info"/>
-    <remap from="rgb/image_rect_color" to="/camera/color/image_rect_color"/>
-    <remap from="depth_registered/image_rect" to="/camera/depth/image_rect_raw"/>
-    <remap from="depth_registered/points" to="/camera/depth_registered/points"/>
+    <remap from="rgb/camera_info" to="$(arg input_camera_info)"/>
+    <remap from="rgb/image_rect_color" to="$(arg input_image)"/>
+    <remap from="depth_registered/image_rect" to="$(arg input_depth)"/>
+    <remap from="depth_registered/points" to="$(arg point_cloud_topic)"/>
   </node>
 
   <!-- COORDINATES -->
