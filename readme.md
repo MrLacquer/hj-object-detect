@@ -23,7 +23,16 @@ NVIDIA-SMI 418.87.00    Driver Version: 418.87.00    CUDA Version: 10.1
 
 ### Dependencies
 
-This software is built on the Robotic Operating System ([ROS]), which needs to be [installed](http://wiki.ros.org) first. Additionally, YOLO for ROS depends on following software:
+This software is built on the Robotic Operating System ([ROS](http://wiki.ros.org/ROS/Installation)).
+
+One line install: https://cafe.naver.com/openrt/14575 
+```
+for Desktop
+
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic.sh && chmod 755 ./install_ros_kinetic.sh && bash ./install_ros_kinetic.sh
+``` 
+
+Additionally, YOLO for ROS depends on following software:
 
 - [OpenCV 3.4.x](http://opencv.org/) (computer vision library),
 - [OpenCV 3.4.2](https://jsh93.tistory.com/53) (How to install the opencv? in Korean),
