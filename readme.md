@@ -89,7 +89,7 @@ $ sudo make install
 - [CUDA 10.0 with cuDNN 10.x](https://greedywyatt.tistory.com/106), (How to install the cuda? in Korean),
    - notice: Do it after install the nvidia driver. 
              And the cuda version is follow on your GPU. check up the [GPUs supported](https://en.wikipedia.org/wiki/CUDA)
-- Download the CUDA in the NVIDIA webpage[link](https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal)
+- Download the CUDA in the NVIDIA webpage ([link](https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal))
 ```
 $ sudo dpkg -i cuda-repo-ubuntu1604-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
 $ sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
