@@ -99,6 +99,12 @@ $ sudo apt-get install cuda
 $ gedit ~/.bashrc
    export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}$ 
    export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+Or, if you installed the cuda 10.1,
+$ gedit ~/.bashrc
+   export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}$ 
+   export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 $ reboot
 
 - check up the installed
