@@ -136,6 +136,32 @@ $ sudo dpkg -i libcudnn7-doc_7.6.2.24-1+cuda10.0_amd64.deb
 ```
 
 - [Intel® RealSense™ Depth Camera D435 library](http://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_applications/#ros-applications)
+```
+after the RealSense install
+
+$ cd ~/catkin_ws/src/realsense
+$ git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
+```
+
+- jsk_recognition
+```
+sudo apt-get install ros-kinetic-jsk-recognition
+sudo apt-get install ros-kinetic-jsk-topic-tools
+   
+source biuld pacakges 
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/jsk-ros-pkg/jsk_common.git
+```
+
+- nodelet, rtabmap-ros, navigation
+```
+$ sudo apt-get install ros-kinetic-octomap-server
+$ sudo apt-get install ros-kinetic-nodelet
+$ sudo apt-get install ros-kinetic-depth-image-proc
+$ sudo apt-get install ros-kinetic-rtabmap-ros
+$ sudo apt-get install ros-kinetic-navigation
+```
+[ref. page, Oroca naver cafe, Korean](https://cafe.naver.com/openrt/21022)
 
 ## How to start?
 Copy and paste
@@ -143,8 +169,18 @@ Copy and paste
 $ roscd hj_object_detect/
 $ cd copy_paste_files
 $ cp -r hj_p.yaml ~/catkin_ws/src/darknet_ros/darknet_ros/config
+
 $ cp -r p.cfg ~/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/cfg
+
 $ cp -r YoloObjectDetector.cpp ~/catkin_ws/src/darknet_ros/darknet_ros/src
+$ cp -r YoloObjectDetector.hpp ~/catkin_ws/src/darknet_ros/darknet_ros/include/darknet_ros
+```
+
+Weight file Dowload [link](https://drive.google.com/file/d/1RxoWf0uWkAOB2uymEG259AuPujBKl_Oa/view?usp=sharing)
+
+```
+$ cd (your dowload folder)
+$ cp -r p_final.weights ~/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
 ```
 
 Real realsense camera
