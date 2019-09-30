@@ -6,6 +6,12 @@
  *   Institute: ETH Zurich, Robotic Systems Lab
  */
 
+/*
+ *  Edited on: Aug 20, 2019
+ *      Author: Hyeonjun Park
+ *   Institute: Human-Robot Interaction LAB, Kyung Hee Unviersity, South Korea
+ */
+
 #pragma once
 
 // c++
