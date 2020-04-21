@@ -1,4 +1,4 @@
-# hj_object_detect
+# hj_object_detect (Kinetic)
 
 ## Overview
 
@@ -135,15 +135,27 @@ $ sudo dpkg -i libcudnn7-doc_7.6.2.24-1+cuda10.0_amd64.deb
  $ source setup.bash 
 ```
 
-- [Intel® RealSense™ Depth Camera D435 library](http://emanual.robotis.com/docs/en/platform/openmanipulator_x/ros_applications/#ros-applications)
+- [Intel® RealSense™ Depth Camera D435 library](https://github.com/IntelRealSense/realsense-ros)
 ```
-after the RealSense install
+Intel SDK 2.0 install
+
+- Register the server's public key
+$ sudo apt-key adv --keyserver keys.gnupg.net --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
+- Add the server to the list of repositories:
+$ sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u
+$ sudo apt-get install librealsense2-dkms
+$ sudo apt-get install librealsense2-utils
+$ sudo apt-get install librealsense2-dev
+$ sudo apt-get install librealsense2-dbg
+
+RealSense ROS
 
 $ cd ~/catkin_ws/src/realsense
 $ git clone https://github.com/pal-robotics/ddynamic_reconfigure.git
 ```
 
-- jsk_recognition
+- [jsk_recognition](https://github.com/jsk-ros-pkg/jsk_common)
 ```
 sudo apt-get install ros-kinetic-jsk-recognition
 sudo apt-get install ros-kinetic-jsk-topic-tools
@@ -151,6 +163,10 @@ sudo apt-get install ros-kinetic-jsk-topic-tools
 source biuld pacakges 
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/jsk-ros-pkg/jsk_common.git
+$ cd jsk_common
+$ rosdep install -y -r --from-path . --ignore-src
+$ cd ..
+$ catkin_make darknet_ros
 ```
 
 - nodelet, rtabmap-ros, navigation
@@ -197,7 +213,7 @@ $ roslaunch hj_object_detect hj_jsk_test.launch sim:=true
 
 ## Launch tree
 
-### hj_object_detect.launch 
+#### hj_object_detect.launch 
 - bringup_d435.launch
    - rs_rgbd.launch
 - hj_darknet.launch
@@ -206,10 +222,18 @@ $ roslaunch hj_object_detect hj_jsk_test.launch sim:=true
    - parameter: $(find hj_object_detect)/config/hj_darknet_config.yaml
    - parameter: $(find darknet_ros)/config/hj_p.yaml
 
-### hj_jsk_test.launch
+#### hj_jsk_test.launch
 - point cloud nodelet
 - jsk_pcl_utils/LabelToClusterPointIndices nodelet
 - jsk_pcl/ClusterPointIndicesDecomposer
+
+## Note
+- If the coordinate of detected hammer object is not visible, try to this process.
+```
+$ cd ~/catkin_ws/src
+$ cd jsk_common
+$ rosdep install -y -r --from-path . --ignore-src
+```
 
 ## Video
 Click image to link to YouTube video.  
